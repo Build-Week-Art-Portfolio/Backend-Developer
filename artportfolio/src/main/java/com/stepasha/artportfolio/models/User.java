@@ -1,8 +1,11 @@
 package com.stepasha.artportfolio.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.stepasha.artportfolio.logging.Loggable;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -107,8 +110,15 @@ public class User extends Auditable
     {
         return password;
     }
-
+    //TODO 24 Encrypt the pass
+    //TODO AUTH 5 ENCRYPT THE PASSWORD
     public void setPassword(String password)
+    {
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        this.password = passwordEncoder.encode(password);
+    }
+    //TODO AUTH 6 NON ENCODED
+    public void setPasswordNotEncrypt(String password)
     {
         this.password = password;
     }
@@ -132,4 +142,24 @@ public class User extends Auditable
     {
         this.useremails = useremails;
     }
+
+    //TODO AUTH 4 SimpleGrantAuthority
+    //TODO 23 Simple grant Auth granted to user
+    @JsonIgnore
+    public List<SimpleGrantedAuthority> getAuthority()
+    {
+        List<SimpleGrantedAuthority> rtnList = new ArrayList<>();
+
+        for (UserRoles r : this.userroles)
+        {
+            String myRole = "ROLE_" + r.getRole()
+                    .getName()
+                    .toUpperCase();
+            rtnList.add(new SimpleGrantedAuthority(myRole));
+        }
+
+        return rtnList;
+    }
+
+
 }

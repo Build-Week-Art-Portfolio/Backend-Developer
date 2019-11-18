@@ -89,7 +89,7 @@ public class UserServiceImpl implements UserService
         User newUser = new User();
         newUser.setUsername(user.getUsername()
                                 .toLowerCase());
-        newUser.setPassword(user.getPassword());
+        newUser.setPasswordNotEncrypt(user.getPassword());
         newUser.setPrimaryemail(user.getPrimaryemail()
                                     .toLowerCase());
 
@@ -131,7 +131,7 @@ public class UserServiceImpl implements UserService
 
         if (user.getPassword() != null)
         {
-            currentUser.setPassword(user.getPassword());
+            currentUser.setPasswordNotEncrypt(user.getPassword());
         }
 
         if (user.getPrimaryemail() != null)
