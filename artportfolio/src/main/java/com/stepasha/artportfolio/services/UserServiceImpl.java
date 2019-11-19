@@ -87,11 +87,18 @@ public class UserServiceImpl implements UserService
         }
 
         User newUser = new User();
+        newUser.setProfilepicture(user.getProfilepicture());
         newUser.setUsername(user.getUsername()
                                 .toLowerCase());
         newUser.setPasswordNotEncrypt(user.getPassword());
         newUser.setPrimaryemail(user.getPrimaryemail()
                                     .toLowerCase());
+        newUser.setFirstname(user.getFirstname());
+        newUser.setLastname(user.getLastname());
+        newUser.setAge(user.getAge());
+        newUser.setLocation(user.getLocation());
+
+
 
         ArrayList<UserRoles> newRoles = new ArrayList<>();
         for (UserRoles ur : user.getUserroles())
@@ -123,6 +130,9 @@ public class UserServiceImpl implements UserService
 
         User currentUser = findUserById(id);
 
+        if (user.getProfilepicture() != null){
+            currentUser.setProfilepicture(user.getProfilepicture());
+        }
         if (user.getUsername() != null)
         {
             currentUser.setUsername(user.getUsername()
@@ -138,6 +148,18 @@ public class UserServiceImpl implements UserService
         {
             currentUser.setPrimaryemail(user.getPrimaryemail()
                                             .toLowerCase());
+        }
+        if (currentUser.getFirstname() != null){
+            currentUser.setFirstname(user.getFirstname());
+        }
+        if (currentUser.getLastname() != null){
+            currentUser.setLastname(user.getLastname());
+        }
+        if (currentUser.hasAge){
+            currentUser.setAge(user.getAge());
+        }
+        if (currentUser.getLocation() != null){
+            currentUser.setLocation(user.getLocation());
         }
 
         if (user.getUserroles()

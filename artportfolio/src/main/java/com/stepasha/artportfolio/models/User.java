@@ -20,6 +20,8 @@ public class User extends Auditable
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long userid;
+    @Column(nullable = true)
+private String profilepicture;
 
     @Column(nullable = false,
             unique = true)
@@ -33,6 +35,17 @@ public class User extends Auditable
             unique = true)
     @Email
     private String primaryemail;
+    @Column(nullable = true)
+    private String firstname;
+    @Column(nullable = true)
+    private String lastname;
+
+    @JsonIgnore()
+    public boolean hasAge = false;
+    private int age;
+    @Column(nullable = true)
+    private String location;
+
 
     @OneToMany(mappedBy = "user",
             cascade = CascadeType.ALL)
@@ -45,23 +58,80 @@ public class User extends Auditable
     @JsonIgnoreProperties("user")
     private List<Useremail> useremails = new ArrayList<>();
 
-    public User()
-    {
-    }
+    @OneToMany(mappedBy = "user",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
+    @JsonIgnoreProperties("user")
+    private List<Art> arts = new ArrayList<>();
+    public User(){}
 
-    public User(String username,
-                String password,
-                String primaryemail,
-                List<UserRoles> userRoles)
-    {
+    public User(String profilepicture, String username, String password, @Email String primaryemail, String firstname, String lastname, int age, String location, List<UserRoles> userroles) {
+        this.profilepicture = profilepicture;
         setUsername(username);
         setPassword(password);
         this.primaryemail = primaryemail;
-        for (UserRoles ur : userRoles)
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.age = age;
+        this.location = location;
+        for (UserRoles ur : userroles)
         {
             ur.setUser(this);
         }
-        this.userroles = userRoles;
+        this.userroles = userroles;
+
+
+
+    }
+
+    public String getProfilepicture() {
+        return profilepicture;
+    }
+
+    public void setProfilepicture(String profilepicture) {
+        this.profilepicture = profilepicture;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+
+        hasAge = true;
+        this.age = age;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public List<Art> getArts() {
+        return arts;
+    }
+
+    public void setArts(List<Art> arts) {
+        this.arts = arts;
     }
 
     public long getUserid()
@@ -132,12 +202,12 @@ public class User extends Auditable
     {
         this.userroles = userroles;
     }
-
+//delete those later
     public List<Useremail> getUseremails()
     {
         return useremails;
     }
-
+//delete those later
     public void setUseremails(List<Useremail> useremails)
     {
         this.useremails = useremails;

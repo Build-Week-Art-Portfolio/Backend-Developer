@@ -17,7 +17,7 @@ public class Art extends Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long artid;
-
+    private String posteddate;
     private String imageurl;
 
     private String title;
@@ -28,21 +28,29 @@ public class Art extends Auditable {
     @ManyToOne
     @JoinColumn(name = "categoryid")
     @JsonIgnoreProperties("arts")
-    private Categories categories;
+    private Category category;
 
     @OneToMany(mappedBy = "art", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnoreProperties("art")
     private List<Portfolio> portfolios = new ArrayList<>();
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "users",
+            nullable = false)
+    @JsonIgnoreProperties("art")
+    private User user;
+
 
     public Art(){}
 
-    public Art(String imageurl, String title, String description, String arttype, Categories categories) {
+    public Art(String posteddate, String imageurl, String title, String description, String arttype, Category category, List<Portfolio> portfolios) {
+        this.posteddate = posteddate;
         this.imageurl = imageurl;
         this.title = title;
         this.description = description;
         this.arttype = arttype;
-        this.categories = categories;
+        this.category = category;
+        this.portfolios = portfolios;
     }
 
     public long getArtid() {
@@ -51,6 +59,22 @@ public class Art extends Auditable {
 
     public void setArtid(long artid) {
         this.artid = artid;
+    }
+
+    public String getPosteddate() {
+        return posteddate;
+    }
+
+    public void setPosteddate(String posteddate) {
+        this.posteddate = posteddate;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getImageurl() {
@@ -85,12 +109,12 @@ public class Art extends Auditable {
         this.arttype = arttype;
     }
 
-    public Categories getCategories() {
-        return categories;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setCategories(Categories categories) {
-        this.categories = categories;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public List<Portfolio> getPortfolios() {

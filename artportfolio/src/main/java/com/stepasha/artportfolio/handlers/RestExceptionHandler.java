@@ -39,7 +39,7 @@ import java.util.List;
 @Loggable
 // bean shared across controller classes
 @Order(Ordered.HIGHEST_PRECEDENCE)
-@ControllerAdvice
+//@ControllerAdvice
 public class RestExceptionHandler extends ResponseEntityExceptionHandler
 {
     private static final Logger logger = LoggerFactory.getLogger(RestExceptionHandler.class);

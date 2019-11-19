@@ -16,15 +16,15 @@ public class Portfolio extends Auditable implements Serializable {
 
     @Id
     @ManyToOne
-    @JoinColumn(name = "artistid")
+    @JoinColumn(name = "userid")
     @JsonIgnoreProperties("portfolios")
-    private Artist artist;
+    private User user;
 
     public Portfolio(){}
 
-    public Portfolio(Art art, Artist artist) {
+    public Portfolio(Art art, User user) {
         this.art = art;
-        this.artist = artist;
+        this.user = user;
     }
 
     public Art getArt() {
@@ -35,11 +35,11 @@ public class Portfolio extends Auditable implements Serializable {
         this.art = art;
     }
 
-    public Artist getArtist() {
-        return artist;
+    public User getUser() {
+        return user;
     }
 
-    public void setArtist(Artist artist) {
-        this.artist = artist;
+    public void setUser(User user) {
+        this.user = user;
     }
 }

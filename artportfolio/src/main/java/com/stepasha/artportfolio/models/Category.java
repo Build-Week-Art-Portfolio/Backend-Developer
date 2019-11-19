@@ -11,7 +11,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "category")
-public class Categories extends Auditable{
+public class Category extends Auditable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,9 +24,9 @@ public class Categories extends Auditable{
     @JsonIgnoreProperties("category")
     private List<Art> arts = new ArrayList<>();
 
-    public Categories(){}
+    public Category(){}
 
-    public Categories(String categoryname) {
+    public Category(String categoryname) {
         this.categoryname = categoryname;
     }
 
@@ -46,11 +46,11 @@ public class Categories extends Auditable{
         this.categoryname = categoryname;
     }
 
-    public List<Art> getBooks() {
+    public List<Art> getArts() {
         return arts;
     }
 
-    public void setBooks(List<Art> arts) {
+    public void setArts(List<Art> arts) {
         this.arts = arts;
     }
 }
