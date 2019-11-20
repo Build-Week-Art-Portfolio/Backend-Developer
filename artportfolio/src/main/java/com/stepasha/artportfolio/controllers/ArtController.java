@@ -36,13 +36,7 @@ public class ArtController {
         List<Art> arts = artService.findAll();
         return new ResponseEntity<>(arts, HttpStatus.OK);
     }
-    // http://localhost:2222/art/art/1
-    @PutMapping(value = "/art/{id}", consumes = {"application/json"})
-    public ResponseEntity<?> updateArtById(HttpServletRequest request, @RequestBody Art art, @PathVariable long artid) {
-        logger.info(request.getMethod().toUpperCase() + " " + request.getRequestURI() + " accessed");
-        artService.update(art, artid);
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
+
     //CREATE
     //http://localhost:2222/art/art
     @PostMapping(value = "/art",
@@ -60,5 +54,22 @@ public class ArtController {
 
         return new ResponseEntity<>(null, responseHeader, HttpStatus.CREATED);
     }
+    // http://localhost:2222/art/art/1
+    @PutMapping(value = "/art/{artid}",
+            consumes = {"application/json"})
+    public ResponseEntity<?> updateArt(@RequestBody Art updateArt,
+                                            @PathVariable long artid){
+        artService.update(updateArt, artid);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+    // http://localhost:2222/art/art/1
+    @DeleteMapping(value = "/art/{artid}")
+    public ResponseEntity<?> deleteArt(@PathVariable long artid){
+        artService.delete(artid);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+
+
 
 }

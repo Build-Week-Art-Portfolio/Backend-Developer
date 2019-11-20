@@ -22,8 +22,8 @@ public class ArtServiceImpl implements ArtService{
     private ArtRepository artRepository;
 
     @Override
-    public Art getArtById(long artid) {
-        return artRepository.findArtByArtid(artid);
+    public Art getArtById(long id) {
+        return artRepository.findByArtid(id);
     }
 
     @Override
