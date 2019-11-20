@@ -48,7 +48,7 @@ public class SeedData implements CommandLineRunner
                                  r2));
         admins.add(new UserRoles(new User(),
                                  r3));
-        User u1 = new User("www.piicture.com",
+        User u1 = new User("https://upload.wikimedia.org/wikipedia/en/d/dc/MichaelScott.png",
                            "admin",
                            "password",
                            "gmaqeil@gmail.com",
@@ -72,7 +72,7 @@ public class SeedData implements CommandLineRunner
                                 r3));
         datas.add(new UserRoles(new User(),
                                 r2));
-        User u2 = new User("www.piicture.com",
+        User u2 = new User("https://upload.wikimedia.org/wikipedia/en/d/dc/MichaelScott.png",
                 "user",
                 "password",
                 "gmai45l@gmail.com",
@@ -96,7 +96,7 @@ public class SeedData implements CommandLineRunner
         ArrayList<UserRoles> users = new ArrayList<>();
         users.add(new UserRoles(new User(),
                                 r2));
-        User u3 = new User("www.piicture.com",
+        User u3 = new User("https://upload.wikimedia.org/wikipedia/en/d/dc/MichaelScott.png",
                 "admin1r23",
                 "password",
                 "gma2il@gmail.com",
@@ -113,7 +113,7 @@ public class SeedData implements CommandLineRunner
         users = new ArrayList<>();
         users.add(new UserRoles(new User(),
                                 r2));
-        User u4 = new User("www.piicture.com",
+        User u4 = new User("https://upload.wikimedia.org/wikipedia/en/d/dc/MichaelScott.png",
                 "user123",
                 "password",
                 "gm2ail@gmail.com",
@@ -127,7 +127,7 @@ public class SeedData implements CommandLineRunner
         users = new ArrayList<>();
         users.add(new UserRoles(new User(),
                                 r2));
-        User u5 = new User("www.piicture.com",
+        User u5 = new User("https://upload.wikimedia.org/wikipedia/en/d/dc/MichaelScott.png",
                 "adminuser",
                 "password",
                 "gmail@gmail.com",
