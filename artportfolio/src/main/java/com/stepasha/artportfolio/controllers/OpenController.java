@@ -79,10 +79,14 @@ public class OpenController
 
         // Create the user
         User newuser = new User();
-
+        newuser.setProfilepicture(newminuser.getProfilepicture());
         newuser.setUsername(newminuser.getUsername());
         newuser.setPassword(newminuser.getPassword());
         newuser.setPrimaryemail(newminuser.getPrimaryemail());
+        newuser.setFirstname(newminuser.getFirstname());
+        newuser.setLastname(newminuser.getLastname());
+        newuser.setAge(newminuser.getAge());
+        newuser.setLocation(newminuser.getLocation());
 //TODO CU 1a (auto defaults to user)(requires model UserMinimum)
         ArrayList<UserRoles> newRoles = new ArrayList<>();
         newRoles.add(new UserRoles(newuser,

@@ -35,15 +35,15 @@ private String profilepicture;
             unique = true)
     @Email
     private String primaryemail;
-    @Column(nullable = true)
+
     private String firstname;
-    @Column(nullable = true)
+
     private String lastname;
 
     @JsonIgnore()
     public boolean hasAge = false;
     private int age;
-    @Column(nullable = true)
+
     private String location;
 
 

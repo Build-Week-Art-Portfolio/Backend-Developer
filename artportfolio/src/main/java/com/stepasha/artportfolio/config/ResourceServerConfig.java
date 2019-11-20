@@ -33,6 +33,8 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter
 
         http.authorizeRequests()
             .antMatchers("/",
+                    "/users/**",
+                    "/art/**",
                          "/h2-console/**",
                          "/swagger-resources/**",
                          "/swagger-resource/**",
@@ -41,14 +43,14 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter
                          "/webjars/**",
                          "/createnewuser")
             .permitAll()
-            .antMatchers("/users/**",
+            .antMatchers(
                          "/useremails/**",
                          "/oauth/revoke-token",
                          "/logout")
             .authenticated()
             .antMatchers("/roles/**",
                          "/actuator/**")
-            .hasAnyRole("USER")
+            .hasAnyRole("ADMIN", "DATA", "USERS")
             .antMatchers("/data/**")
             .hasAnyRole("ADMIN",
                         "DATA", "USER")

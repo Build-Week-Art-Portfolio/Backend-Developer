@@ -43,6 +43,7 @@ public class ArtServiceImpl implements ArtService{
         newArt.setTitle(art.getTitle());
         newArt.setDescription(art.getDescription());
         newArt.setArttype(art.getArttype());
+        newArt.setUser(art.getUser());
 
         return artRepository.save(newArt);
     }
@@ -64,6 +65,9 @@ public class ArtServiceImpl implements ArtService{
         }
         if (art.getArttype() != null) {
             currentArt.setArttype(art.getArttype());
+        }
+        if (art.getUser() != null){
+            currentArt.setUser(art.getUser());
         }
 
         return artRepository.save(currentArt);

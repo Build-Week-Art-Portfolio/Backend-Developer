@@ -1,5 +1,6 @@
 package com.stepasha.artportfolio.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.stepasha.artportfolio.logging.Loggable;
 
@@ -32,11 +33,11 @@ public class Art extends Auditable {
 
 
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "users",
-            nullable = true)
-    @JsonIgnoreProperties("art")
-    private User user;
+   @ManyToOne
+   @JoinColumn(name = "users",
+           nullable = true)
+   @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+   private User user;
 
 
     public Art(){}
