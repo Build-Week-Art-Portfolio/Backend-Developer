@@ -39,7 +39,7 @@ public class UserController
                 produces = {"application/json"})
     public ResponseEntity<?> listAllUsers(HttpServletRequest request,
                                           @PageableDefault(page = 0,
-                                                           size = 5)
+                                                           size = 100)
                                                   Pageable pageable)
     {
         logger.trace(request.getMethod()

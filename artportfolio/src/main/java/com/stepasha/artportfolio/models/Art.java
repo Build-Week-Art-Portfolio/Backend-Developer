@@ -25,32 +25,30 @@ public class Art extends Auditable {
     @Column(nullable = true)
     private String arttype;
 
-    @ManyToOne
-    @JoinColumn(name = "categoryid")
-    @JsonIgnoreProperties("arts")
-    private Category category;
+ //   @ManyToOne
+ //   @JoinColumn(name = "categoryid")
+ //   @JsonIgnoreProperties("arts")
+ //   private Category category;
 
-    @OneToMany(mappedBy = "art", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonIgnoreProperties("art")
-    private List<Portfolio> portfolios = new ArrayList<>();
+
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "users",
-            nullable = false)
+            nullable = true)
     @JsonIgnoreProperties("art")
     private User user;
 
 
     public Art(){}
 
-    public Art(String posteddate, String imageurl, String title, String description, String arttype, Category category, List<Portfolio> portfolios) {
+    public Art(String posteddate, String imageurl, String title, String description, String arttype, User user) {
         this.posteddate = posteddate;
         this.imageurl = imageurl;
         this.title = title;
         this.description = description;
         this.arttype = arttype;
-        this.category = category;
-        this.portfolios = portfolios;
+       this.user = user;
+
     }
 
     public long getArtid() {
@@ -109,19 +107,12 @@ public class Art extends Auditable {
         this.arttype = arttype;
     }
 
-    public Category getCategory() {
-        return category;
-    }
+  //  public Category getCategory() {
+  //      return category;
+  //  }
+//
+  //  public void setCategory(Category category) {
+     //   this.category = category;
+   // }
 
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
-    public List<Portfolio> getPortfolios() {
-        return portfolios;
-    }
-
-    public void setPortfolios(List<Portfolio> portfolios) {
-        this.portfolios = portfolios;
-    }
 }
