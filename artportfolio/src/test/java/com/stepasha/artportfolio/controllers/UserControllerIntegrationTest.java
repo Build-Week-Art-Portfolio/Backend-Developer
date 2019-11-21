@@ -50,4 +50,13 @@ public class UserControllerIntegrationTest {
         given().when().get("users/user/name/" + aUser).then().statusCode(200).and().body(containsString("admin"));
     }
 
+
+
+    @Test
+    public void givenDeleteAUser()
+    {
+        long aUser = 4L;
+        given().when().delete("/users/user/" + aUser).then().statusCode(200);
+    }
+
 }
