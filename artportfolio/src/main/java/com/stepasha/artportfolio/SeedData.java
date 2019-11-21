@@ -4,10 +4,8 @@ import com.github.javafaker.Faker;
 import com.github.javafaker.service.FakeValuesService;
 import com.github.javafaker.service.RandomService;
 
-import com.stepasha.artportfolio.models.Role;
-import com.stepasha.artportfolio.models.User;
-import com.stepasha.artportfolio.models.UserRoles;
-import com.stepasha.artportfolio.models.Useremail;
+import com.stepasha.artportfolio.models.*;
+import com.stepasha.artportfolio.services.ArtService;
 import com.stepasha.artportfolio.services.RoleService;
 import com.stepasha.artportfolio.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -137,6 +135,10 @@ public class SeedData implements CommandLineRunner
                 "somewhere in the world",
                 users);
         userService.save(u5);
+
+
+
+
 
         // using JavaFaker create a bunch of regular users
         // https://www.baeldung.com/java-faker

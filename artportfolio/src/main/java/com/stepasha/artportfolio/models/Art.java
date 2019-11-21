@@ -39,7 +39,7 @@ public class Art extends Auditable {
    @ManyToOne
    @JoinColumn(name = "users",
            nullable = true)
-   @JsonIgnore
+   @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
    private User user;
 
 
