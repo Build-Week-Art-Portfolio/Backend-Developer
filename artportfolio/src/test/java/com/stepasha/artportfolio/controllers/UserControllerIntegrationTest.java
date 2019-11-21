@@ -35,6 +35,12 @@ public class UserControllerIntegrationTest {
     {
         given().when().get("/users/users").then().time(lessThan(10000L));
     }
+    @Test
+    public void givenFoundUserId() throws Exception
+    {
+        long aRestaurant = 4L;
 
+        given().when().get("/users/user/" + aRestaurant).then().statusCode(200).and().body(containsString("admin"));
+    }
 
 }
