@@ -3,8 +3,10 @@ package com.stepasha.artportfolio.controllers;
 
 import com.stepasha.artportfolio.handlers.RestExceptionHandler;
 import com.stepasha.artportfolio.logging.Loggable;
+import com.stepasha.artportfolio.models.ErrorDetail;
 import com.stepasha.artportfolio.models.User;
 import com.stepasha.artportfolio.services.UserService;
+import io.swagger.annotations.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,6 +52,23 @@ public class UserController
                                     HttpStatus.OK);
     }
 
+    //TODO 3 SW api ops
+    @ApiImplicitParams({@ApiImplicitParam(name = "page",
+            dataType = "integer",
+            paramType = "query",
+            value = "Results page you want to retrieve (1..N)"), @ApiImplicitParam(name = "size",
+            dataType = "integer",
+            paramType = "query",
+            value = "Number of records per page."), @ApiImplicitParam(name = "sort",
+            allowMultiple = true,
+            dataType = "string",
+            paramType = "query",
+            value = "Sorting criteria in the format: property(,asc|desc). " + "Default sort order is ascending. " + "Multiple sort criteria are supported.")})
+
+
+    @ApiOperation(value = "returns all Users",
+            response = User.class,
+            responseContainer = "List")
     // http://localhost:2222/users/allusers
     @GetMapping(value = "/allusers",
                 produces = {"application/json"})
@@ -59,11 +78,20 @@ public class UserController
         return new ResponseEntity<>(myUsers,
                                     HttpStatus.OK);
     }
-
+    @ApiOperation(value = "Retrieve a user based of off user id",
+            response = User.class)
+    @ApiResponses(value = {@ApiResponse(code = 200,
+            message = "User Found",
+            response = User.class), @ApiResponse(code = 404,
+            message = "User Not Found",
+            response = ErrorDetail.class)})
     // http://localhost:2222/users/user/7
     @GetMapping(value = "/user/{userId}",
                 produces = {"application/json"})
     public ResponseEntity<?> getUserById(HttpServletRequest request,
+                                         @ApiParam(value = "User id",
+                                                 required = true,
+                                                 example = "4")
                                          @PathVariable
                                                  Long userId)
     {
@@ -74,6 +102,17 @@ public class UserController
         return new ResponseEntity<>(u,
                                     HttpStatus.OK);
     }
+    @ApiImplicitParams({@ApiImplicitParam(name = "page",
+            dataType = "integer",
+            paramType = "query",
+            value = "Results page you want to retrieve (1..N)"), @ApiImplicitParam(name = "size",
+            dataType = "integer",
+            paramType = "query",
+            value = "Number of records per page."), @ApiImplicitParam(name = "sort",
+            allowMultiple = true,
+            dataType = "string",
+            paramType = "query",
+            value = "Sorting criteria in the format: property(,asc|desc). " + "Default sort order is ascending. " + "Multiple sort criteria are supported.")})
 
     // http://localhost:2222/users/user/name/cinnamon
     @GetMapping(value = "/user/name/{userName}",
@@ -181,6 +220,9 @@ public class UserController
         }
 
 */
+    @ApiOperation(value = "updates one user",
+            response = User.class,
+            responseContainer = "One user")
     @PutMapping(value = "/user/{id}",
                 consumes = {"application/json"})
     public ResponseEntity<?> updateUser(HttpServletRequest request,
@@ -197,7 +239,9 @@ public class UserController
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-
+    @ApiOperation(value = "deletes one user",
+            response = User.class,
+            responseContainer = "User")
     // http://localhost:2222/users/user/14
     @DeleteMapping(value = "/user/{id}")
     public ResponseEntity<?> deleteUserById(HttpServletRequest request,

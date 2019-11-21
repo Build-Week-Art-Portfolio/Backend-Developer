@@ -7,6 +7,9 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
+//TODO 1 SWAGGER
+//TODO 39 swagger set up
+
 @Configuration
 public class WebConfig implements WebMvcConfigurer
 {

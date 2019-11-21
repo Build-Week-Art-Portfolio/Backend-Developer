@@ -18,10 +18,13 @@ public class Art extends Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long artid;
+    @Column(nullable = true)
     private String posteddate;
+    @Column(nullable = true)
     private String imageurl;
-
+    @Column(nullable = true)
     private String title;
+    @Column(nullable = true)
     private String description;
     @Column(nullable = true)
     private String arttype;
@@ -36,7 +39,7 @@ public class Art extends Auditable {
    @ManyToOne
    @JoinColumn(name = "users",
            nullable = true)
-   @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+   @JsonIgnore
    private User user;
 
 
