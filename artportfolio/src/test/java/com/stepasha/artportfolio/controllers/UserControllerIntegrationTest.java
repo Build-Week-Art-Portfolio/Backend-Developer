@@ -42,5 +42,12 @@ public class UserControllerIntegrationTest {
 
         given().when().get("/users/user/" + aRestaurant).then().statusCode(200).and().body(containsString("admin"));
     }
+    @Test
+    public void givenFoundUserName() throws Exception
+    {
+        String aUser = "admin";
+
+        given().when().get("users/user/name/" + aUser).then().statusCode(200).and().body(containsString("admin"));
+    }
 
 }
