@@ -1,1 +1,102 @@
 # Backend-Developer
+
+
+Albert Yakubov
+Art Portfolio BackEnd 
+Lambda School
+November 21 2019
+
+Set up CRUD for the USER (Who is an artist)
+Set up CRUD for the ART (Art that belongs to the artist)
+
+1. POM contains dependencies for Swagger, Testing, SpringBoot, H2, PostGres, Heroku
+
+2.Application.properties
+specify the host
+
+3 Custom Exceptions (boiler plate)
+
+4. H2 Config (boiler plate)
+to run the console in intelliJ 
+
+5. REST Exception Handler (boiler plate)
+
+6. Error Detail class 
+model class that is also common boiler plate code
+
+step seven also boiler plate
+7. Making the logs
+7.1 Logging aspect
+7.2 Log Writer
+
+8. Auditable class to add time stapms
+
+9. Log Logback-spring.xml (to resource folder)
+to format the logs and set file size limitations and file path
+
+10. Model for user
+
+11. Create all repos
+
+12. Add JUSTTHECOUNT to enable custom queries
+
+13. Custom count for emails 
+
+14. create all services
+pageable added to constructor
+
+15. User Auditing
+
+16. Controllers
+
+17. SeedData 
+
+18. In main Application
+create a variable for app context
+add dispatch servlet
+
+19. RUN the APP it should run fine!
+
+20. And now OAuth2 config
+
+21. Security Config
+
+22. Security User Service Impl
+
+23. Simple Grant Auth added to user 
+
+24. Encrypt the password
+
+25. Logout Controller
+
+26. Creating User
+
+27. UserMinimum
+
+28. Resource server config
+
+29. RUN!!!
+
+30(-33). Art Model class
+foreign keys added
+
+34. TokenModel
+
+35 Make Repo for Art
+
+36. Make Art Service
+
+37. Art Service Impl
+
+38. Art Controller
+
+39. Swagger Setup
+
+40. Swagger Config
+
+41. In endpoints add details 
+
+42. RUN!!! APP COMPLETE
+
+proceed with testing
+testing created integration testing created  
