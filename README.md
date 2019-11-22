@@ -1,11 +1,11 @@
 # Backend-Developer
 
 
-Albert Yakubov
-Art Portfolio BackEnd 
-Lambda School
-November 21 2019
-
+Albert Yakubov  
+Art Portfolio BackEnd   
+Lambda School  
+November 21 2019  
+  
 Set up CRUD for the USER (Who is an artist)
 Set up CRUD for the ART (Art that belongs to the artist)
 
